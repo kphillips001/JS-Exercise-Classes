@@ -168,12 +168,15 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
+let randomGrade = Math.floor(Math.random() * 100) + 1;
+
 class Student extends Lambdasian{
   constructor(attributes){
     super(attributes);
       this.previousBackground = attributes.previousBackground;
       this.className = attributes.className;
       this.favSubjects = attributes.favSubjects;
+      this.grade = randomGrade;
   }
   listSubjects() {
     return `Loving ${this.favSubjects}!`;
@@ -184,7 +187,16 @@ class Student extends Lambdasian{
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`
   }
+  graduate() {
+    if (this.grade > 70){
+      return `${this.name}, you have ${this.grade} and are ready to graduate from Lambda School!`;
+    } else {
+      return `${this.name}, you're not ready to graduate.  Let me continue to grade your assignments to see if your score increases. `;
+    }
+  }
 }
+
+
 
 /*
   TASK 6
