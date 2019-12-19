@@ -47,7 +47,7 @@ class Person {
     this.stomach = [];
   }
   eat(someFood) {
-      if (this.stomach.length <= 10) {
+      if (this.stomach.length < 10) {
       this.stomach.push(someFood)
     }
   }
@@ -58,6 +58,7 @@ class Person {
     return `${this.name}, ${this.age}`
   }
 }
+
 
 /*
   TASK 2
@@ -81,9 +82,14 @@ class Car {
     this.odoometer = 0;
   }
   fill(gallons) {
-    return this.tank += gallons;
+    this.tank += gallons;
   }
   drive(distance) {
+    
+    if (milesPerGallon * this.tank <= distance) {
+      this.odoometer
+    }
+    
     this.odometer += distance; 
     this.tank -= distance/this.milesPerGallon;
 
@@ -138,7 +144,7 @@ class Instructor extends Lambdasian {
   demo(subject) {
     return `Today we are learning about ${subject}`
   }
-  grade(student) {
+  grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`
   }
 }
@@ -158,8 +164,22 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian{
+  constructor(attributes){
+    super(attributes);
+      this.previousBackground = attributes.previousBackground;
+      this.className = attributes.className;
+      this.favSubjects = attributes.favSubjects;
+  }
+  listSubjects() {
+    return `Loving ${this.favSubjects}!`;
+  }
+  PRAssignment() {
+    return `${this.name} has submitted a PR for ${subject}`
+  }
+  sprintChallenge() {
+    return `${this.name} has begun sprint challenge on ${subject}`
+  }
 }
 
 /*
